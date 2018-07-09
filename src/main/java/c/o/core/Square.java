@@ -11,7 +11,7 @@ public class Square {
     private final int rank;
     private final char file;
 
-    Square(int rank, char file) {
+    private Square(int rank, char file) {
         this.rank = rank;
         this.file = file;
     }

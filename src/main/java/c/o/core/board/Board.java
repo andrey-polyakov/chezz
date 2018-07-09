@@ -19,14 +19,13 @@ public interface Board {
      * Move a piece from one square to the other. May return this board or new instance depending
      * on the implementation.
      *
-     * @param from
+     * @param from must contain a piece
      * @param to
      */
     Board move(Square from, Square to) throws RulesViolationException;
 
     /**
      * Retrieves piece in given square
-     * @param square
      * @return
      */
     Optional<Piece> get(Square square);
@@ -44,19 +43,16 @@ public interface Board {
 
     /**
      * Black ones only
-     * @return
-     */
+\     */
     List<Piece> getBlackPieces();
 
     /**
      * White ones only
-     * @return
      */
     List<Piece> getWhitePieces();
 
     /**
      * To be used by game controller
-     * @return
      */
     boolean isGameOver();
 }

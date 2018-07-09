@@ -25,8 +25,7 @@ public class OneKnightBoard extends AbstractBoard {
         // Checks are omitted for this theoretical exercise.
         // Real game accounts for pawn promotion, castling, en passant
         get(from).orElseThrow(() -> new IllegalArgumentException("No piece at 'from' position"));
-        Board newBoard = new OneKnightBoard(to);
-        return newBoard;
+        return new OneKnightBoard(to);
     }
 
     @Override

@@ -37,30 +37,29 @@ public class Knight implements Piece {
     public Set<Square> getPossibleMoves() {
         Set<Square> moves = new HashSet<>();
         Optional<Square> upper = position.shiftRank(+2);
-        if (upper.isPresent()) {
-            upper.get().shiftFile(+1).ifPresent(square -> moves.add(square));
-            upper.get().shiftFile(-1).ifPresent(square -> moves.add(square));
-        }
+        upper.ifPresent(square1 -> {
+            square1.shiftFile(+1).ifPresent(moves::add);
+            square1.shiftFile(-1).ifPresent(moves::add);
+        });
         Optional<Square> lower = position.shiftRank(-2);
-        if (lower.isPresent()) {
-            lower.get().shiftFile(+1).ifPresent(square -> moves.add(square));
-            lower.get().shiftFile(-1).ifPresent(square -> moves.add(square));
-        }
+        lower.ifPresent(square1 -> {
+            square1.shiftFile(+1).ifPresent(moves::add);
+            square1.shiftFile(-1).ifPresent(moves::add);
+        });
         Optional<Square> left = position.shiftFile(-2);
-        if (left.isPresent()) {
-            left.get().shiftRank(+1).ifPresent(square -> moves.add(square));
-            left.get().shiftRank(-1).ifPresent(square -> moves.add(square));
-        }
+        left.ifPresent(square1 -> {
+            square1.shiftRank(+1).ifPresent(moves::add);
+            square1.shiftRank(-1).ifPresent(moves::add);
+        });
         Optional<Square> right = position.shiftFile(+2);
-        if (right.isPresent()) {
-            right.get().shiftRank(+1).ifPresent(square -> moves.add(square));
-            right.get().shiftRank(-1).ifPresent(square -> moves.add(square));
-        }
+        right.ifPresent(square1 -> {
+            square1.shiftRank(+1).ifPresent(moves::add);
+            square1.shiftRank(-1).ifPresent(moves::add);
+        });
         for (Square move : moves) {
-            board.get(move).ifPresent(piece -> {
+            board.get(move).ifPresent(piece -> {// implement more restrictions here
                 if (piece.getColor() == color || piece.getType() == Pieces.KING) {
                     moves.remove(move);
-                    return;
                 }
             }
             );

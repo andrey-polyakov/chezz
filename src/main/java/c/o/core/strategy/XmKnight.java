@@ -101,7 +101,7 @@ public class XmKnight {
             this.node = node;
         }
 
-        public Piece getPiece() {
+        Piece getPiece() {
             return board.get(node.position).get();
         }
 
@@ -115,7 +115,7 @@ public class XmKnight {
         private Square position;
         private Node motherNode;
 
-        public Node(Square position, Node motherNode) {
+        Node(Square position, Node motherNode) {
             this.position = position;
             this.motherNode = motherNode;
         }
@@ -124,12 +124,11 @@ public class XmKnight {
             this.position = self;
         }
 
-        public Node addChild(Square position) {
-            Node node = new Node(position, this);
-            return node;
+        Node addChild(Square position) {
+            return new Node(position, this);
         }
 
-        public String prettyPrint() {
+        String prettyPrint() {
             StringBuilder sb = new StringBuilder();
             sb.append(position);
             Node previous = motherNode;
